@@ -1,0 +1,197 @@
+Exercice 1 - Voyage
+
+//BUT : Afficher le nombre de villes et villages par rapport à des valeurs entrées
+//ENTREE : Nombre de lieux et nombres d'habitants
+//SORTIE : Nombre de villes
+
+VAR : lieux, population, i, villes	: ENTIERS
+
+//DEBUT
+
+ECRIRE "Combien de lieux avez-vous visité ?" //On demande à l'utilisateur
+LIRE lieux //On prend la réponse de l'utilisateur
+POUR i de 1 à lieux FAIRE PAS DE 1 //On crée une répétition pour un nombre de fois donné
+FAIRE
+	ECRIRE "Entrez le nombre d'habitants"
+	LIRE population
+	SI (population >= 10000) //On définit notre condition
+		FAIRE
+			villes <- villes + 1 //On rajoute un à la valeur actuelle si la condition est vraie
+	FINSI
+FINPOUR
+ECRIRE "Vous avez traversé" + villes + "villes" //On indique le nombre de villes que l'utilisateur a traversées grâce aux valeurs entrées
+
+//FIN
+
+Exercice 2 - Auberge
+
+//BUT : Afficher un prix pour une nuit en fonction de valeurs entrées
+//ENTREE : Deux entiers, l'âge du client et le poids de ses bagages
+//SORTIE : Le prix de la nuit en fonction du client
+
+VAR : age, poids, prix	: ENTIERS
+
+//DEBUT
+
+ECRIRE "Veuillez entrer l'age du client" //On demande à l'utilisateur
+LIRE age //On prend la réponse de l'utilisateur
+ECRIRE "Veuillez entrer le poids des bagages du client"
+LIRE poids
+SI (poids >= 20) //Condition pour rajouter ou non 10 écus au prix final
+	FAIRE
+		prix <- prix + 10
+FINSI
+SI (age = 60) //Condition pour que la nuit soit gratuite ou non
+	FAIRE
+		prix <- 0
+SINON
+	SI (age < 10) //Condition pour avoir ou non un tarif réduit
+		FAIRE
+			prix <- 5
+	SINON //Prix de base
+		FAIRE
+			prix <- prix + 30
+	FINSI
+FINSI
+ECRIRE "Le prix de la nuit est :" + prix + "ecus" //On indique ce que doit le client
+
+//FIN
+
+Exercice 3 - Start to Play
+
+//BUT : Savoir combien de personnes sont au Start to Play, avec une limite de 250
+//ENTREE : 2 valeurs, les personnes entrantes et les personnes sortantes
+//SORTIE : Une information sur le nombre de personnes présentes, et sur le fait que la salle soit pleine ou non
+
+VAR : inout, nbr 	: ENTIERS
+
+//DEBUT
+
+    REPETER
+        ECRIRE "Entrez le nombre de personnes entrantes ou sortantes"
+        LIRE inout
+        nbr <- nbr + inout
+        SI (nbr > 250)
+        FAIRE
+            ECRIRE "Entree impossible"
+            nbr <- nbr - inout
+        SINON
+            SI (nbr = 250)
+            FAIRE
+                ECRIRE "Nombre Maximum Atteint"
+    TANTQUE (nbr != 0)
+
+//FIN
+
+Exercice 4 - Triangle
+
+//BUT : Dessiner un triangle
+//ENTREE :
+//SORTIE : Un triangle
+
+//Premier triangle 
+
+VAR: i : ENTIER
+
+//DEBUT
+
+CAS (i) PARMI : //On écrit les lignes suivantes avec le CAS PARMI
+	CAS1 : 1 	ECRIRE "X\n"
+	CAS2 : 2 	ECRIRE "XX\n"
+	CAS3 : 3	ECRIRE "XOX\n"
+	CAS4 : 4	ECRIRE "XOOX\n"
+	CAS5 : 5 	ECRIRE "XOOOX\n"
+	CAS6 : 6 	ECRIRE "XOOOOX\n"
+	CAS7 : 7 	ECRIRE "XOOOOOX\n"
+	CAS8 : 8 	ECRIRE "XXXXXXXX\n"
+FINCASPARMI
+
+//FIN
+
+//Second triangle
+
+VAR: i : ENTIER
+
+//DEBUT
+
+POUR i de 0 à 9 FAIRE PAS DE 1 //On se situe sur les lignes
+	FAIRE
+        POUR j de 1 à i FAIRE PAS DE 1
+        FAIRE
+            ECRIRE " " //On définit en fonction l'espace à laisser
+        FINSI
+
+        POUR j de 0 à 9-i FAIRE PAS DE 1 //On définit en fonction le nombre de répétitions du chiffr sur la ligne en question
+        FAIRE
+            ECRIRE i 
+        FINPOUR
+        ECRIRE "\n" //On passe à la ligne
+    FINPOUR
+
+//FIN
+
+Exercice 5 - Carré 
+
+//BUT : Dessiner un carré
+//ENTREE : Longeur (L) et largeur (l), c1 est c2
+//SORTIE : Un carré
+
+VAR longueur, largeur, i, j : ENTIER
+    c1, c2 : CHAR
+
+DEBUT
+
+ECRIRE "Entrez la Longeur" //On entre les différentes valeurs nécessaires pour la construction du carré
+    LIRE longueur
+    ECRIRE "Entrez la largeur"
+    LIRE largeur
+    ECRIRE "Entrez c1"
+    LIRE c1
+    ECRIRE "Entrez c2"
+    LIRE c2
+
+    POUR i de 1 à largeur FAIRE PAS DE 1
+	    FAIRE
+	        POUR j de 1 à longueur FAIRE PAS DE 1
+	        FAIRE
+	            SI (i = 1 OU i = largeur)
+	            ALORS
+	                ECRIRE c1
+	            SINON
+	                SI (j = 1 OU j = longueur)
+	                ALORS
+	                    ECRIRE c1
+	                SINON
+	                    ECRIRE c2
+	                FINSI
+	            FINSI
+	        FINPOUR
+	        ECRIRE "\n"
+    FINPOUR
+
+FIN
+
+Exercice 6 - Epidemie
+
+//BUT : Simuler la progression d'une épidémie dans une population donnée
+//ENTREE : Un entier, la population de la ville
+//SORTIE : Le temps qu'il faudra pour que toute la ville soit contaminée
+
+VAR : population, jour, malade	: ENTIER
+
+//DEBUT
+
+jour <- 1 //On initialise nos variables aux données d'une première contamination
+malade <- 1
+ECRIRE "Veuillez entrer la population de la ville"
+LIRE population //On entre notre valeur de référence pour savoir si la ville entière est contaminée ou non
+TANTQUE (malade < population) //Tant que notre nombre de malades ne dépasse pas celui de la population
+	FAIRE
+		jour <- jour + 1 //On incrémente le jour de 1
+		malade <- malade + malade*2 //Et on augmente le nombre de malades, chaque malade infectant 2 personnes par jour
+FINTANTQUE
+ECRIRE "Nombre de jours nécessaires pour une contamination totale de la ville :" + jour //On donne le nombre de jours quand notre condition du TANTQUE est brisée
+
+//FIN
+
+Exercice 7 - Pyramides
